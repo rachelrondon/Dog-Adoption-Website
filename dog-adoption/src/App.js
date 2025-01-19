@@ -1,11 +1,11 @@
 import './App.css';
-import Dogs from './ListOfDogs';
+import Login from './Login';
 
 function App() {
   return (
     <div className="App">
         <h1>Dog Adoption</h1>
-        <Dogs />
+        <Login />
     </div>
   );
 }

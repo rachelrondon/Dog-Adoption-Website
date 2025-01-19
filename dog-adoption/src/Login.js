@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 
-const ListOfDogs = () => {
-  const [dogs, setDogs] = useState([]);
+const Login = () => {
   const api = "https://frontend-take-home-service.fetch.com";
   const user = {
     name: "Rachel", 
@@ -30,10 +29,9 @@ const ListOfDogs = () => {
 
   return (
     <div>
-      <p>List of dogs</p>
-      <p>{dogs}</p>
+      <p>Login</p>
     </div>
   );
 };
 
-export default ListOfDogs;
+export default Login;
