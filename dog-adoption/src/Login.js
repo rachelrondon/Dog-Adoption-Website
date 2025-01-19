@@ -2,31 +2,30 @@ import { useState, useEffect } from 'react';
 
 const Login = () => {
   const api = "https://frontend-take-home-service.fetch.com";
-  const [theName, setName] = useState("");
-  const [theEmail, setEmail] = useState("");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
 
-useEffect(() => {
-    const user = {
-      name: theName, 
-      email: theEmail
-    }
-
-    async function userLogin() {
-      const response = await fetch(`${api}/auth/login`, {
-        method: "POST", 
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(user),
-        credentials: "include"
-      });
-
-      const data = await response.json();
-    };
-    
-    userLogin();
-
-  }, [theName, theEmail]);
+    useEffect(() => {
+      const user = {
+        name: name, 
+        email: email
+      }
+  
+      async function userLogin() {
+        const response = await fetch(`${api}/auth/login`, {
+          method: "POST", 
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(user),
+          credentials: "include"
+        });
+        console.log(response.status)
+      };
+      
+      userLogin();
+  
+    }, [name, email]);
 
   return (
     <div>
