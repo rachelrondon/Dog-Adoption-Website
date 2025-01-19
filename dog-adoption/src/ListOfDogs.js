@@ -9,7 +9,8 @@ const ListOfDogs = () => {
   };
 
   useEffect(() => {
-    async function fetchDogs() {
+
+    async function userLogin() {
       const response = await fetch(`${api}/auth/login`, {
         method: "POST", 
         headers: {
@@ -17,16 +18,15 @@ const ListOfDogs = () => {
         },
         body: JSON.stringify(user),
         credentials: "include"
-      })
-      const data = await response.json();
-      setDogs(data);
-    };
+      });
 
-    fetchDogs();
+      const data = await response.json();
+    };
+    
+    userLogin();
 
   }, []);
 
-  console.log(dogs);
 
   return (
     <div>
