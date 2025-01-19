@@ -2,12 +2,14 @@ import { useState, useEffect } from 'react';
 
 const Login = () => {
   const api = "https://frontend-take-home-service.fetch.com";
-  const user = {
-    name: "Rachel", 
-    email: "rachel.sun.rondon@gmail.com"
-  };
+  const [theName, setName] = useState("");
+  const [theEmail, setEmail] = useState("");
 
-  useEffect(() => {
+useEffect(() => {
+    const user = {
+      name: theName, 
+      email: theEmail
+    }
 
     async function userLogin() {
       const response = await fetch(`${api}/auth/login`, {
@@ -24,12 +26,21 @@ const Login = () => {
     
     userLogin();
 
-  }, []);
-
+  }, [theName, theEmail]);
 
   return (
     <div>
-      <p>Login</p>
+      <form>  
+        <label>
+          Name:
+         <input onChange={(e) => setName(e.target.value)}/>
+        </label>
+        <label>
+          Email:
+        <input onChange={(e) => setEmail(e.target.value)}/>
+        </label>
+        <button type="submit">login</button>
+      </form>
     </div>
   );
 };
