@@ -3,11 +3,12 @@ import { useState, useEffect } from 'react';
 const Show = () => {
 
   const api = "https://frontend-take-home-service.fetch.com";
-  const [dogBreeds, setDogBreeds] = useState("");
+  const [dogIds, setDogIds] = useState("");
+  const [dogs, setDogs] = useState("");
 
   useEffect(() => {
     async function getData() {
-      const response = await fetch(`${api}/dogs/breeds`, {
+      const response = await fetch(`${api}/dogs/search?size=10&from=10?sort=[asc|desc]`, {
         method: "GET", 
         headers: {
           'Content-Type': 'application/json'
@@ -16,23 +17,34 @@ const Show = () => {
         credentials: "include"
       });
       const data = await response.json();
-      setDogBreeds(data);
+      setDogIds(data.resultIds);
     }
 
     getData()
   }, []);
 
-  console.log(dogBreeds);
+    useEffect(() => {
+      async function getDogs() {
+        const response = await fetch(`${api}/dogs`, {
+          method: "POST",
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(dogIds),
+          credentials: "include"
+        });
+        const data = await response.json();
+        console.log(data);
+        setDogs(data);
+      }
+
+      getDogs();
+    }, [dogIds])
+
+    console.log(dogs);
   return (
     <div>
       <p>List of Dogs</p>
-      {dogBreeds.map((breed) => {
-        return (
-          <h2>
-            {breed}
-          </h2>
-        )
-      })}
     </div>
   )
 };
