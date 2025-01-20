@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
   const api = "https://frontend-take-home-service.fetch.com";
@@ -46,7 +47,7 @@ const Login = () => {
           Email:
         <input value={email} onChange={(e) => setEmail(e.target.value)}/>
         </label>
-        <button type="submit">login</button>
+        <Link type="submit" to="/dogs">login</Link>
       </form>
     </div>
   );
