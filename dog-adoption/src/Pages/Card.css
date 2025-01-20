@@ -1,0 +1,12 @@
+.info-card {
+  border: 0.0125rem solid black;
+  width: 19rem;
+  min-height: 19rem;
+  text-align: center;
+  margin: 0.75rem;
+
+  img {
+    height: 10rem;
+    width: auto;
+  }
+}

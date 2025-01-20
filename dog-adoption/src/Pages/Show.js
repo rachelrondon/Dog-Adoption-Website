@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import Card from './Card';
+import './Show.css';
 
 const Show = () => {
 
@@ -50,7 +51,7 @@ const Show = () => {
   return (
     <div>
       {dogs ? (
-        <div>
+        <div className="card-container">
         {[...dogs].map((dog) => {
           return (
             <Card key={dog.id} dog={dog} />
