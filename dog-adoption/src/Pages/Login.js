@@ -4,13 +4,14 @@ const Login = () => {
   const api = "https://frontend-take-home-service.fetch.com";
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [loggedIn, setLoggedIn] = useState(false);
 
-    useEffect(() => {
-      const user = {
-        name: name, 
-        email: email
-      }
-  
+  const user = {
+    name: name, 
+    email: email
+  };
+
+    useEffect(() => {  
       async function userLogin() {
         const response = await fetch(`${api}/auth/login`, {
           method: "POST", 
@@ -27,16 +28,23 @@ const Login = () => {
   
     }, [name, email]);
 
+    const handleLoginSubmit = async (e) => {
+      e.preventDefault();
+      console.log(name, email);
+      setLoggedIn(true);
+      console.log(loggedIn);
+    };
+
   return (
     <div>
-      <form>  
+      <form onSubmit={handleLoginSubmit}>  
         <label>
           Name:
-         <input onChange={(e) => setName(e.target.value)}/>
+         <input value={name} onChange={(e) => setName(e.target.value)}/>
         </label>
         <label>
           Email:
-        <input onChange={(e) => setEmail(e.target.value)}/>
+        <input value={email} onChange={(e) => setEmail(e.target.value)}/>
         </label>
         <button type="submit">login</button>
       </form>
