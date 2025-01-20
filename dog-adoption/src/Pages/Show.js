@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import Card from './Card';
 
 const Show = () => {
 
@@ -8,43 +9,58 @@ const Show = () => {
 
   useEffect(() => {
     async function getData() {
-      const response = await fetch(`${api}/dogs/search?size=10&from=10?sort=[asc|desc]`, {
+      const response = await fetch(`${api}/dogs/search`, {
         method: "GET", 
         headers: {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify(),
         credentials: "include"
-      });
+      }).catch((error) => console.log('error'));
       const data = await response.json();
       setDogIds(data.resultIds);
     }
 
     getData()
   }, []);
-
+  
     useEffect(() => {
-      async function getDogs() {
-        const response = await fetch(`${api}/dogs`, {
-          method: "POST",
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(dogIds),
-          credentials: "include"
-        });
-        const data = await response.json();
-        console.log(data);
-        setDogs(data);
+      if (dogIds) {
+        async function getDogs() {
+          const response = await fetch(`${api}/dogs`, {
+            method: "POST",
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(dogIds),
+            credentials: "include"
+          })
+          const data = await response.json();
+          console.log(data);
+          setDogs(data);
+        }
+        getDogs();
+      } else {
+        console.log("loading");
+        // ToDo: Add loading icon 
       }
 
-      getDogs();
     }, [dogIds])
-
-    console.log(dogs);
+ 
   return (
     <div>
-      <p>List of Dogs</p>
+      {dogs ? (
+        <div>
+        {[...dogs].map((dog) => {
+          return (
+            <Card key={dog.id} dog={dog} />
+          )
+        })}
+        </div>
+      ): (
+          <p>Loading</p>
+      )}
+
     </div>
   )
 };
