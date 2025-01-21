@@ -49,9 +49,9 @@ const Show = () => {
     }, [dogIds])
  
   return (
-    <div>
+    <div className="card-container">
       {dogs ? (
-        <div className="card-container">
+        <div className="card-layout">
         {[...dogs].map((dog) => {
           return (
             <Card key={dog.id} dog={dog} />

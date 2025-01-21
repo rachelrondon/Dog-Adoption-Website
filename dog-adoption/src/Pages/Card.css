@@ -1,12 +1,26 @@
 .info-card {
-  border: 0.0125rem solid black;
-  width: 19rem;
-  min-height: 19rem;
+  background-color: #fff;
+  margin-bottom: 2rem;
+  flex-basis: 22%;
   text-align: center;
-  margin: 0.75rem;
+  width: 100%;
+  
+      img {
+        height: 10rem;
+        width: 100%;
+      }
 
-  img {
-    height: 10rem;
-    width: auto;
-  }
+      .info-card-content {
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+        padding: 1rem;
+
+        h4 {
+          font-size: 0.875rem;
+          font-weight: normal;
+          margin-bottom: 0.3rem;
+          margin-top: 0;
+        }
+      }
 }
