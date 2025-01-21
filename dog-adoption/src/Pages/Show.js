@@ -7,10 +7,12 @@ const Show = () => {
   const api = "https://frontend-take-home-service.fetch.com";
   const [dogIds, setDogIds] = useState("");
   const [dogs, setDogs] = useState("");
+  const sortBreedAscending = 'sort=breed:asc';
 
   useEffect(() => {
-    async function getData() {
-      const response = await fetch(`${api}/dogs/search`, {
+
+    async function getData(sortBy) {
+      const response = await fetch(`${api}/dogs/search?${sortBy}`, {
         method: "GET", 
         headers: {
           'Content-Type': 'application/json'
@@ -22,7 +24,7 @@ const Show = () => {
       setDogIds(data.resultIds);
     }
 
-    getData()
+    getData(sortBreedAscending)
   }, []);
   
     useEffect(() => {
@@ -37,7 +39,7 @@ const Show = () => {
             credentials: "include"
           })
           const data = await response.json();
-          console.log(data);
+          console.log(data);     
           setDogs(data);
         }
         getDogs();
@@ -47,7 +49,8 @@ const Show = () => {
       }
 
     }, [dogIds])
- 
+
+
   return (
     <div className="card-container">
       {dogs ? (
