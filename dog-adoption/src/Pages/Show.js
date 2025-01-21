@@ -9,7 +9,7 @@ const Show = () => {
   const [dogs, setDogs] = useState("");
   const [sortBy, setSortBy] = useState('sort=breed:asc');
   const [sortAsc, setSortAsc] = useState(true);
-  const [cardsPerPage, setCardsPerPage] = useState(12);
+  const [cardsPerPage, setCardsPerPage] = useState(8);
   const [pagination, setPagination] = useState('from=0')
   const [loadMore, setLoadMore] = useState("");
 
@@ -72,7 +72,7 @@ const Show = () => {
     const loadMoreBtn = () => {
       console.log('load more btn');
       setPagination(loadMore);
-      setCardsPerPage(cardsPerPage + 12);
+      setCardsPerPage(cardsPerPage + 8);
     };
 
 
