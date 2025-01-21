@@ -9,11 +9,12 @@ const Show = () => {
   const [dogs, setDogs] = useState("");
   const [sortBy, setSortBy] = useState('sort=breed:asc');
   const [sortAsc, setSortAsc] = useState(true);
+  const [dogsPerPage, setDogsPerPage] = useState(12);
 
   useEffect(() => {
 
     async function getData() {
-      const response = await fetch(`${api}/dogs/search?${sortBy}`, {
+      const response = await fetch(`${api}/dogs/search?${sortBy}&size=${dogsPerPage}`, {
         method: "GET", 
         headers: {
           'Content-Type': 'application/json'
