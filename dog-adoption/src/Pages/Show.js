@@ -9,12 +9,13 @@ const Show = () => {
   const [dogs, setDogs] = useState("");
   const [sortBy, setSortBy] = useState('sort=breed:asc');
   const [sortAsc, setSortAsc] = useState(true);
-  const [dogsPerPage, setDogsPerPage] = useState(12);
+  const [cardsPerPage, setCardsPerPage] = useState(12);
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
 
     async function getData() {
-      const response = await fetch(`${api}/dogs/search?${sortBy}&size=${dogsPerPage}`, {
+      const response = await fetch(`${api}/dogs/search?${sortBy}&size=${cardsPerPage}`, {
         method: "GET", 
         headers: {
           'Content-Type': 'application/json'
