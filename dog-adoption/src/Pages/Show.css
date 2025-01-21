@@ -13,3 +13,7 @@
   display: flex;
   flex-direction: row;
 }
+
+.dropdown {
+  margin-top: 1rem;
+}
