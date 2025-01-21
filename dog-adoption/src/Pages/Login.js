@@ -22,7 +22,6 @@ const Login = () => {
           body: JSON.stringify(user),
           credentials: "include"
         });
-        console.log(response.status)
       };
       
       userLogin();
@@ -31,9 +30,7 @@ const Login = () => {
 
     const handleLoginSubmit = async (e) => {
       e.preventDefault();
-      console.log(name, email);
       setLoggedIn(true);
-      console.log(loggedIn);
     };
 
   return (

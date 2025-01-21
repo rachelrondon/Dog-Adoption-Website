@@ -7,7 +7,6 @@ const Show = () => {
   const api = "https://frontend-take-home-service.fetch.com";
   const [dogIds, setDogIds] = useState("");
   const [dogs, setDogs] = useState("");
-  const [dogBreed, setDogBreed] = useState("");
   const [sortBy, setSortBy] = useState('sort=breed:asc');
   const [sortAsc, setSortAsc] = useState(true);
 
@@ -41,13 +40,11 @@ const Show = () => {
             credentials: "include"
           })
           const data = await response.json();
-          console.log(data);     
           setDogs(data);
         }
         getDogs();
       } else {
         console.log("loading");
-        // ToDo: Add loading icon 
       }
 
     }, [dogIds])
