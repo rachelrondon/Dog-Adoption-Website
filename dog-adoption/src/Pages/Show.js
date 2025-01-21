@@ -9,25 +9,7 @@ const Show = () => {
   const [dogs, setDogs] = useState("");
   const [dogBreed, setDogBreed] = useState("");
   const [sortBy, setSortBy] = useState('sort=breed:asc');
-
-  /*
-  useEffect(() => {
-    async function getDogBreeds() {
-      const response = await fetch(`${api}/dogs/breeds`, {
-        method: "GET", 
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(),
-        credentials: "include"
-      }).catch((error) => console.log('error'));
-      const data = await response.json();
-      setDogBreed(data);
-    }
-    getDogBreeds();
-
-  }, []);*/ 
-
+  const [sortAsc, setSortAsc] = useState(true);
 
   useEffect(() => {
 
@@ -45,7 +27,7 @@ const Show = () => {
     }
 
     getData()
-  }, []);
+  }, [sortBy]);
   
     useEffect(() => {
       if (dogIds) {
@@ -69,31 +51,37 @@ const Show = () => {
       }
 
     }, [dogIds])
+   
 
-    const searchByDogBreed = (formData) => {
-      const dogBreed = formData.get("query");
-      alert(`Dog Breed: ${dogBreed}`);
+    const toggleSort = () => {
+      if (sortBy.includes("asc")) {
+        setSortAsc(false);
+        setSortBy('sort=breed:desc')
+      } else {
+        setSortAsc(true);
+        setSortBy('sort=breed:asc')
+      }
     };
 
   return (
     <div className="card-container">
-      <form className="dropdown">
-        <input name="query"  />
-        <button formAction={searchByDogBreed} /* type="submit"*/>Search</button>
-      </form>
-
-      {dogs ? (
-        <div className="card-layout">
-        {[...dogs].map((dog) => {
-          return (
-            <Card key={dog.id} dog={dog} />
-          )
-        })}
+      <div>
+        <div className="card-sort">
+          <h4>Sort by Breed:</h4>
+          <button onClick={toggleSort}>{sortAsc ? <span>&#8593;</span>: <span>&#8595;</span>}</button>
         </div>
-      ): (
-          <p>Loading</p>
-      )}
-
+        {dogs ? (
+          <div className="card-layout">
+          {[...dogs].map((dog) => {
+            return (
+              <Card key={dog.id} dog={dog} />
+            )
+          })}
+          </div>
+        ): (
+            <p>Loading</p>
+        )}
+     </div>
     </div>
   )
 };
