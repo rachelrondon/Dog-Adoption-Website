@@ -55,7 +55,6 @@ const Show = () => {
       }
 
     }, [dogIds])
-   
 
     const toggleSort = () => {
       if (sortBy.includes("asc")) {
@@ -72,7 +71,6 @@ const Show = () => {
       setCardsPerPage(cardsPerPage + 8);
     };
 
-
     const handleFilter = (e) => {
       setDogBreed(e.target.value);
     }
@@ -80,6 +78,7 @@ const Show = () => {
     const handleFilterSubmit = (e) => {
       e.preventDefault();
       setSortBy(`&breeds=${dogBreed}`)
+      setDogBreed("");
     }
 
   return (
@@ -92,7 +91,7 @@ const Show = () => {
         <form onSubmit={handleFilterSubmit}>
           <label>
             Sort by breed:
-            <input type="text"  onChange={handleFilter} />
+            <input type="text" value={dogBreed} onChange={handleFilter} />
           </label>
           <button type="submit">Submit</button>
         </form>
