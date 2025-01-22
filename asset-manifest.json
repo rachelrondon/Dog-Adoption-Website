@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/dog-adoption/static/css/main.0c47d3e7.css",
+    "main.js": "/dog-adoption/static/js/main.c30d1bcf.js",
+    "static/js/488.839c861e.chunk.js": "/dog-adoption/static/js/488.839c861e.chunk.js",
+    "index.html": "/dog-adoption/index.html",
+    "main.0c47d3e7.css.map": "/dog-adoption/static/css/main.0c47d3e7.css.map",
+    "main.c30d1bcf.js.map": "/dog-adoption/static/js/main.c30d1bcf.js.map",
+    "488.839c861e.chunk.js.map": "/dog-adoption/static/js/488.839c861e.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.0c47d3e7.css",
+    "static/js/main.c30d1bcf.js"
+  ]
+}
