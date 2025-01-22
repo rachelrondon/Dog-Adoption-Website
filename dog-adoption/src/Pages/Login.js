@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import './Login.css';
 
 const Login = () => {
   const api = "https://frontend-take-home-service.fetch.com";
@@ -34,18 +35,24 @@ const Login = () => {
     };
 
   return (
-    <div>
-      <form onSubmit={handleLoginSubmit}>  
-        <label>
-          Name:
-         <input value={name} onChange={(e) => setName(e.target.value)}/>
-        </label>
-        <label>
-          Email:
-        <input value={email} onChange={(e) => setEmail(e.target.value)}/>
-        </label>
-        <Link type="submit" to="/dogs">login</Link>
-      </form>
+    <div className="login-page">
+      <h1 className="login-page-title">Fetch Dog Shelter - Adopt or Foster</h1>
+      <div className="login-page-container">
+      <h2 className="login-title">Login</h2>
+        <div className="login-page-form">
+          <form onSubmit={handleLoginSubmit}>  
+            <label>
+              Name:
+            <input className="input-name" value={name} onChange={(e) => setName(e.target.value)}/>
+            </label>
+            <label>
+              Email:
+            <input className="input-email" value={email} onChange={(e) => setEmail(e.target.value)}/>
+            </label>
+            <Link className="login-btn" type="submit" to="/dogs">login</Link>
+          </form>
+        </div>
+      </div>
     </div>
   );
 };

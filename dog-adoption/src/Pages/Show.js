@@ -26,6 +26,8 @@ const Show = () => {
         credentials: "include"
       }).catch((error) => console.log('error'));
       const data = await response.json();
+      console.log('data:', data);
+      const total = data.total;
       const next = data.next;
       const index = next.indexOf("from");
       const x = next.slice(index);
@@ -48,7 +50,6 @@ const Show = () => {
             credentials: "include"
           })
           const data = await response.json();
-          console.log('data:', data);
           setDogs(data);
         }
         getDogs();
@@ -104,7 +105,7 @@ const Show = () => {
     <div className="show-page">
       <div className="show-page-container">
         <section className="show-page-top">
-          <h2 className="show-page-title">Adopt your next furry friend!</h2>
+          <h2 className="show-page-title">Adopt or foster your next furry friend!</h2>
           <div className="show-page-search-options">
           <div className="card-sort">
             <h4>Sort by Breed</h4>
