@@ -12,11 +12,12 @@ const Show = () => {
   const [cardsPerPage, setCardsPerPage] = useState(8);
   const [pagination, setPagination] = useState('from=0')
   const [loadMore, setLoadMore] = useState("");
+  const [filter, setFilter] = useState("");
+  const [dogBreed, setDogBreed] = useState("");
 
   useEffect(() => {
-
     async function getData() {
-      const response = await fetch(`${api}/dogs/search?${sortBy}&size=${cardsPerPage}&${pagination}`, {
+      const response = await fetch(`${api}/dogs/search?${sortBy}&breed=${filter}&size=${cardsPerPage}&${pagination}`, {
         method: "GET", 
         headers: {
           'Content-Type': 'application/json'
@@ -25,7 +26,6 @@ const Show = () => {
         credentials: "include"
       }).catch((error) => console.log('error'));
       const data = await response.json();
-      console.log('data', data);
       const next = data.next;
       const index = next.indexOf("from");
       const x = next.slice(index);
@@ -34,7 +34,7 @@ const Show = () => {
     }
 
     getData()
-  }, [sortBy, pagination]);
+  }, [filter, sortBy, pagination]);
   
     useEffect(() => {
       if (dogIds) {
@@ -48,7 +48,6 @@ const Show = () => {
             credentials: "include"
           })
           const data = await response.json();
-          console.log('data', data);
           setDogs(data);
         }
         getDogs();
@@ -70,11 +69,21 @@ const Show = () => {
     };
 
     const loadMoreBtn = () => {
-      console.log('load more btn');
       setPagination(loadMore);
       setCardsPerPage(cardsPerPage + 8);
     };
 
+    console.log('filter', filter);
+
+    const handleFilter = (e) => {
+      setDogBreed(e.target.value);
+    }
+
+    const handleFilterSubmit = (e) => {
+      e.preventDefault();
+      setFilter(dogBreed);
+      console.log('filter value:', filter);
+    }
 
   return (
     <div className="card-container">
@@ -83,6 +92,13 @@ const Show = () => {
           <h4>Sort by Breed</h4>
           <button onClick={toggleSort}>{sortAsc ? <span>&#8593;</span>: <span>&#8595;</span>}</button>
         </div>
+        <form onSubmit={handleFilterSubmit}>
+          <label>
+            Sort by breed:
+            <input type="text"  onChange={handleFilter} />
+          </label>
+          <button type="submit">Submit</button>
+        </form>
         {dogs ? (
           <div className="card-layout">
           {[...dogs].map((dog) => {
