@@ -1,17 +1,17 @@
-.card-layout {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  margin: 0 auto;
-  width: 100%;
-}
-
-.card-container {
+.show-page {
   display: flex;
   flex-direction: row;
   margin: 0 auto;
   width: 1170px;
+}
+
+.card-layout {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 0 auto;
+  width: 100%;
 }
 
 .card-sort {
@@ -24,6 +24,45 @@
     }
 }
 
+.card-filter {
+  padding: 1rem;
+}
+
 .load-more-btn {
   margin: 1rem;
+  width: 100%;
+  border-style: none;
+  background-color: #E3E3E3;
+  padding: 1rem 0 1rem 0;
+  color: #4E8476;
+  font-weight: bold;
+
+  &:hover {
+    background-color: #4E8476;
+    color: #f3f3f3;
+    font-weight: bold;
+  }
 }
+
+.sort-btn {
+  border-style: none;
+  background-color: #f3f3f3;
+}
+
+.submit-btn {
+  border-style: none;
+  background-color: #f3f3f3;
+}
+
+.show-page-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.show-page-top {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+

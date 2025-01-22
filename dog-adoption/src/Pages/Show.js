@@ -82,19 +82,21 @@ const Show = () => {
     }
 
   return (
-    <div className="card-container">
-      <div>
-        <div className="card-sort">
-          <h4>Sort by Breed</h4>
-          <button onClick={toggleSort}>{sortAsc ? <span>&#8593;</span>: <span>&#8595;</span>}</button>
-        </div>
-        <form onSubmit={handleFilterSubmit}>
-          <label>
-            Sort by breed:
-            <input type="text" value={dogBreed} onChange={handleFilter} />
-          </label>
-          <button type="submit">Submit</button>
-        </form>
+    <div className="show-page">
+      <div className="show-page-container">
+        <section className="show-page-top">
+          <div className="card-sort">
+            <h4>Sort by Breed</h4>
+            <button className="sort-btn" onClick={toggleSort}>{sortAsc ? <span>&#8593;</span>: <span>&#8595;</span>}</button>
+          </div>
+          <form className="card-filter" onSubmit={handleFilterSubmit}>
+            <label>
+              Sort by breed:
+              <input type="text" value={dogBreed} onChange={handleFilter} />
+            </label>
+            <button className="submit-btn" type="submit">Submit</button>
+          </form>
+        </section>
         {dogs ? (
           <div className="card-layout">
           {[...dogs].map((dog) => {
