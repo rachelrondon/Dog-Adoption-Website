@@ -12,12 +12,11 @@ const Show = () => {
   const [cardsPerPage, setCardsPerPage] = useState(8);
   const [pagination, setPagination] = useState('from=0')
   const [loadMore, setLoadMore] = useState("");
-  const [filter, setFilter] = useState("");
   const [dogBreed, setDogBreed] = useState("");
 
   useEffect(() => {
     async function getData() {
-      const response = await fetch(`${api}/dogs/search?${sortBy}&breed=${filter}&size=${cardsPerPage}&${pagination}`, {
+      const response = await fetch(`${api}/dogs/search?${sortBy}&size=${cardsPerPage}&${pagination}`, {
         method: "GET", 
         headers: {
           'Content-Type': 'application/json'
@@ -34,7 +33,7 @@ const Show = () => {
     }
 
     getData()
-  }, [filter, sortBy, pagination]);
+  }, [sortBy, pagination, cardsPerPage]);
   
     useEffect(() => {
       if (dogIds) {
@@ -73,7 +72,6 @@ const Show = () => {
       setCardsPerPage(cardsPerPage + 8);
     };
 
-    console.log('filter', filter);
 
     const handleFilter = (e) => {
       setDogBreed(e.target.value);
@@ -81,8 +79,7 @@ const Show = () => {
 
     const handleFilterSubmit = (e) => {
       e.preventDefault();
-      setFilter(dogBreed);
-      console.log('filter value:', filter);
+      setSortBy(`&breeds=${dogBreed}`)
     }
 
   return (
