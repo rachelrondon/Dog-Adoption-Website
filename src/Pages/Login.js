@@ -42,7 +42,7 @@ const Login = () => {
       <h2 className="login-title">Login</h2>
         <div className="login-page-form">
           <form onSubmit={handleLoginSubmit}>  
-            <label>
+            <label className="login-form-name">
               Name:
             <input required className="input-name" type="text" value={name} onChange={(e) => setName(e.target.value)}/>
             </label>

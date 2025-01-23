@@ -5,7 +5,31 @@
   justify-content: center;
   margin: 0 auto;
   text-align: center;
-  width: 73rem;
+  max-width: 73rem;
+}
+
+@media (max-width: 767px) {
+  .login-page-title {
+    margin: 1rem;
+  }
+  .login-page-form {
+    form {
+      display: flex;
+      flex-direction: column;
+
+      .login-form-name {
+        margin-left: 2rem;
+      }
+
+      label {
+        margin-top: 1rem;
+      }
+
+      .login-btn {
+        margin: 1rem 0 0 0;
+      }
+    }
+  }
 }
 
 .login-page-container {
