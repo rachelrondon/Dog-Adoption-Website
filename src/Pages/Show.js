@@ -26,8 +26,6 @@ const Show = () => {
         credentials: "include"
       }).catch((error) => console.log('error'));
       const data = await response.json();
-      console.log('data:', data);
-      const total = data.total;
       const next = data.next;
       const index = next.indexOf("from");
       const x = next.slice(index);
