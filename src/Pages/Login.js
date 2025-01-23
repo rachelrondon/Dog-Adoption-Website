@@ -22,7 +22,7 @@ const Login = () => {
           },
           body: JSON.stringify(user),
           credentials: "include"
-        }).catch((error) => console.log('error'))
+        }).catch((error) => console.log('error logging in'))
         let statusCode = response.status;
         setStatusCode(statusCode);
       };
