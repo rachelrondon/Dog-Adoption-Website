@@ -6,7 +6,6 @@ const Login = () => {
   const api = "https://frontend-take-home-service.fetch.com";
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [login, setLogin] = useState(false);
   const [statusCode, setStatusCode] = useState("");
 
   const user = {
@@ -30,7 +29,7 @@ const Login = () => {
 
       userLogin();
   
-    }, [name, email, login]);
+    }, [name, email]);
 
     const handleLoginSubmit = async (e) => {
       e.preventDefault();
