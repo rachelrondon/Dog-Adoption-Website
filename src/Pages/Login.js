@@ -6,7 +6,8 @@ const Login = () => {
   const api = "https://frontend-take-home-service.fetch.com";
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [login, setLogin] = useState(false);
+  const [statusCode, setStatusCode] = useState("");
 
   const user = {
     name: name, 
@@ -22,16 +23,17 @@ const Login = () => {
           },
           body: JSON.stringify(user),
           credentials: "include"
-        });
+        }).catch((error) => console.log('error'))
+        let statusCode = response.status;
+        setStatusCode(statusCode);
       };
-      
+
       userLogin();
   
-    }, [name, email]);
+    }, [name, email, login]);
 
     const handleLoginSubmit = async (e) => {
       e.preventDefault();
-      setLoggedIn(true);
     };
 
   return (
@@ -43,13 +45,25 @@ const Login = () => {
           <form onSubmit={handleLoginSubmit}>  
             <label>
               Name:
-            <input className="input-name" value={name} onChange={(e) => setName(e.target.value)}/>
+            <input required className="input-name" type="text" value={name} onChange={(e) => setName(e.target.value)}/>
             </label>
             <label>
               Email:
-            <input className="input-email" value={email} onChange={(e) => setEmail(e.target.value)}/>
+            <input required className="input-email" type="email" value={email} onChange={(e) => setEmail(e.target.value)}/>
             </label>
-            <Link className="login-btn" type="submit" to="/dogs">login</Link>
+            {statusCode === 200 ? (
+              <Link 
+              className="login-btn" 
+              type="submit"
+              to="/dogs">
+              login</Link>            
+            ): (
+              <Link 
+              className="login-btn" 
+              type="submit"
+              to="">
+              login</Link>  
+            )}
           </form>
         </div>
       </div>
