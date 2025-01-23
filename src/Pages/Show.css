@@ -102,8 +102,14 @@
   }
 }
 
+.loading {
+  color: #1D3E13;
+  font-size: 3rem;
+}
+
 @media (min-width: 1200px) {
   .show-page {
+    justify-content: center;
     width: 73rem;
   }
 }

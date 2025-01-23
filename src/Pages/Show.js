@@ -12,6 +12,7 @@ const Show = () => {
   const [cardsPerPage, setCardsPerPage] = useState(8);
   const [pagination, setPagination] = useState('from=0')
   const [loadMore, setLoadMore] = useState("");
+  const [showLoadMore, setShowLoadMore] = useState(true);
   const [selectedDogBreed, setSelectedDogBreed] = useState("");
   const [dogBreedList, setDogBreedList] = useState("");
 
@@ -25,16 +26,28 @@ const Show = () => {
         body: JSON.stringify(),
         credentials: "include"
       }).catch((error) => console.log('error'));
+
+      // returns the ids for each dog
       const data = await response.json();
-      const next = data.next;
-      const index = next.indexOf("from");
-      const x = next.slice(index);
-      setLoadMore(x);
       setDogIds(data.resultIds);
+
+      // updates the 'from' query parameter 
+      const next = data.next;
+      const index = next?.indexOf("from");
+      const x = next?.slice(index);
+      console.log('x', x);
+      setLoadMore(x);
+      
+      // removes load more btn 
+      const amount = x?.replace('from=', '');
+      const total = data.total;
+      if (amount > total) {
+        setShowLoadMore(false);
+      }
     }
 
     getData()
-  }, [sortBy, pagination, cardsPerPage]);
+  }, [sortBy, pagination, cardsPerPage, showLoadMore]);
   
     useEffect(() => {
       if (dogIds) {
@@ -47,6 +60,7 @@ const Show = () => {
             body: JSON.stringify(dogIds),
             credentials: "include"
           })
+          // Returns the information for each dog 
           const data = await response.json();
           setDogs(data);
         }
@@ -68,6 +82,7 @@ const Show = () => {
           credentials: "include"
         }).catch((error) => console.log('error'));
         const data = await response.json();
+        console.log(data);
         setDogBreedList(data);
       }
   
@@ -97,6 +112,9 @@ const Show = () => {
     const handleFilterSubmit = (e) => {
       e.preventDefault();
       setSortBy(`&breeds=${selectedDogBreed}`)
+      setCardsPerPage(8);
+      setShowLoadMore(true);
+      setPagination('from=0');
     }
 
   return (
@@ -133,9 +151,13 @@ const Show = () => {
           })}
           </div>
         ): (
-            <p>Loading</p>
+            <p className="loading">Loading</p>
         )}
-        <button onClick={loadMoreBtn} className="load-more-btn">Load More</button>
+        {dogs && showLoadMore ? (
+          <button onClick={loadMoreBtn} className="load-more-btn">Load More</button>
+        ): (
+          console.log('loading')
+        )}
      </div>
     </div>
   )
