@@ -1,9 +1,10 @@
 .info-card {
   background-color: #fff;
-  flex-basis: 22%;
-  margin-bottom: 2rem;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2); 
+  color: #767676;
+  margin: 0 1rem 1rem 0;
   text-align: center;
-  width: 100%;
+  width: 15rem;
   
       img {
         height: 10rem;
@@ -23,4 +24,25 @@
           margin-top: 0;
         }
       }
+}
+
+@media (min-width: 1072px) {
+  .info-card:nth-child(4n+4) {
+    margin-right: 0;
+  } 
+}
+
+@media (min-width: 816px) and (max-width: 1071px) {
+  .info-card:nth-child(3n+3) {
+    margin-right: 0;
+  }
+  .info-card:last-child {
+    margin-right: 0;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 815px) {
+  .info-card:nth-child(2n+2) {
+    margin-right: 0;
+  } 
 }
