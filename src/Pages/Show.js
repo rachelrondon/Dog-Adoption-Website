@@ -121,7 +121,6 @@ const Show = () => {
     <div className="show-page">
       <div className="show-page-container">
         <section className="show-page-top">
-          <h2 className="show-page-title">Adopt or foster your next furry friend!</h2>
           <div className="show-page-search-options">
           <div className="card-sort">
             <h4>Sort by Breed</h4>
