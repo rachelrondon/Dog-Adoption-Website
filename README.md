@@ -1,7 +1,10 @@
-# Dog Adoption Website: https://dog-adoption-18eaf1f20122.herokuapp.com/
+## Dog Adoption Website
 
 ### Description: 
 A user is able to login and view information about available dogs such as name, age, photo, breed, and zip code. 
+
+### Link
+https://dog-adoption-18eaf1f20122.herokuapp.com/
 
 ### Requirements
 ✅ Users must be able to filter by breed
