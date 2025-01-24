@@ -42,7 +42,7 @@
   width: auto;
 
   label {
-    color: #1D3E13;
+    color: #1c3144;
     font-weight: bold;
   }
 
@@ -57,7 +57,7 @@
 }
 
 .login-btn {
-  background-color: #1D3E13;
+  background-color: #1c3144;;
   border-style: none;
   color: #f3f3f3;
   cursor: pointer;
@@ -75,11 +75,11 @@
 }
 
 .login-page-title {
-  color: #1D3E13;
+  color: #1c3144;;
 }
 
 .login-title {
-  color: #1D3E13;
+  color: #1c3144;;
   margin-top: 0;
 }
 

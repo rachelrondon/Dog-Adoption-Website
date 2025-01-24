@@ -19,3 +19,5 @@ The results are paginated and 8 cards are displayed by default. An additional 8 
 ### To Do:
 
 Include a logout button for the user. 
+
+

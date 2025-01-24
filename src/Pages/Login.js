@@ -38,9 +38,8 @@ const Login = () => {
 
   return (
     <div className="login-page">
-      {/*<h1 className="login-page-title">Fetch Dog Shelter - Adopt or Foster</h1> */}
       <div className="login-page-container">
-      <h2 className="login-title">Fetch Dog Shelter</h2>
+      <h1 className="login-title">Fetch Dog Shelter</h1>
         <div className="login-page-form">
           <form onSubmit={handleLoginSubmit}>  
             <label className="login-form-name">
@@ -67,7 +66,7 @@ const Login = () => {
           </form>
         </div>
       </div>
-      <img className="login-page-photo" src={photo} alt="dog photo"></img>
+      <img className="login-page-photo" src={photo} alt="dog"></img>
     </div>
   );
 };
