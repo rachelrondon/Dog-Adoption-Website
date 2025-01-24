@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './Login.css';
+import photo from '../Assets/Photos/isabela-kronemberger-wPD_oM9zRT0-unsplash.jpg';
 
 const Login = () => {
   const api = "https://frontend-take-home-service.fetch.com";
@@ -37,9 +38,9 @@ const Login = () => {
 
   return (
     <div className="login-page">
-      <h1 className="login-page-title">Fetch Dog Shelter - Adopt or Foster</h1>
+      {/*<h1 className="login-page-title">Fetch Dog Shelter - Adopt or Foster</h1> */}
       <div className="login-page-container">
-      <h2 className="login-title">Login</h2>
+      <h2 className="login-title">Fetch Dog Shelter</h2>
         <div className="login-page-form">
           <form onSubmit={handleLoginSubmit}>  
             <label className="login-form-name">
@@ -66,6 +67,7 @@ const Login = () => {
           </form>
         </div>
       </div>
+      <img className="login-page-photo" src={photo} alt="dog photo"></img>
     </div>
   );
 };
